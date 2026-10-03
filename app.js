@@ -27,7 +27,7 @@ async function getAllQuestions() {
 
   if (!quizkey) {
     alert("Quiz Key not found. Redirecting...");
-    window.location.href = "./quizview.html";
+    window.location.href = "./QuizView.html";
     return;
   }
 
