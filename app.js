@@ -208,7 +208,7 @@ async function finishAndSaveQuiz() {
             <span>Your Percentage</span>
             <strong>${percentage}%</strong>
         </div>
-        <button onclick="window.location.href='./quizview.html'">Back to Quizzes</button>
+        <button onclick="window.location.href='./QuizView.html'">Back to Quizzes</button>
     `;
 
   var quizkey = localStorage.getItem("quizKey");
@@ -263,7 +263,7 @@ async function checkQuiz() {
         result.innerHTML = `
                     <h1>🎉 Quiz Already Completed</h1>
                     <div class="score">${alreadyAttempted.score}%</div>
-                    <button onclick="window.location.href='./quizview.html'">Back to Quizzes</button>
+                    <button onclick="window.location.href='./QuizView.html'">Back to Quizzes</button>
                 `;
         return;
       }
