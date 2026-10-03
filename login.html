@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LMS Login</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background-color: #f8fafc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .login-card {
+        background: #ffffff;
+        padding: 32px 28px;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.05),
+          0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+      }
+
+      .logo-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 4px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        color: #64748b;
+        margin-bottom: 20px;
+      }
+
+      /* Error Message Styling */
+      .error-box {
+        display: none;
+        background-color: #fef2f2;
+        border: 1px solid #fecaca;
+        color: #dc2626;
+        padding: 10px 14px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 16px;
+        text-align: left;
+      }
+
+      .form-group {
+        margin-bottom: 16px;
+        text-align: left;
+      }
+
+      label {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        color: #334155;
+        margin-bottom: 6px;
+      }
+
+      input[type="email"],
+      input[type="text"] {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #0f172a;
+        outline: none;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+        background-color: #ffffff;
+      }
+
+      input[type="email"]:focus,
+      input[type="text"]:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+
+      button#login {
+        width: 100%;
+        padding: 11px;
+        background-color: #2563eb;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        margin-top: 8px;
+      }
+
+      button#login:hover {
+        background-color: #1d4ed8;
+      }
+
+      a {
+        display: inline-block;
+        margin-top: 18px;
+        color: #2563eb;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="login-card">
+      <h2 class="logo-title">LMS LogIn</h2>
+      <p class="subtitle">Sign in to your account to continue</p>
+
+      <!-- Error Message Box -->
+      <div id="errorMessage" class="error-box"></div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" placeholder="Enter Email Address" id="email" />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="text" placeholder="Enter Password" id="password" />
+      </div>
+
+      <button id="login">login</button>
+
+      <br />
+      <a href="./signup.html">don't have an account ? </a>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-database-compat.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyAQONBiI8n5d7ESOExHW9wMpVQt8wiMfF4",
+        authDomain: "quiz-app-6c845.firebaseapp.com",
+        databaseURL: "https://quiz-app-6c845-default-rtdb.firebaseio.com",
+        projectId: "quiz-app-6c845",
+        storageBucket: "quiz-app-6c845.firebasestorage.app",
+        messagingSenderId: "531417377109",
+        appId: "1:531417377109:web:3f340d6ccd8726aba2a7dc",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="login.js"></script>
+  </body>
+</html>

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LMS Signup</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background-color: #f8fafc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .signup-card {
+        background: #ffffff;
+        padding: 32px 28px;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.05),
+          0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        width: 100%;
+        max-width: 420px;
+        text-align: center;
+      }
+
+      .logo-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 4px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        color: #64748b;
+        margin-bottom: 20px;
+      }
+
+      /* Profile Picture Custom UI */
+      .avatar-wrapper {
+        position: relative;
+        width: 90px;
+        height: 90px;
+        margin: 0 auto 20px auto;
+        cursor: pointer;
+      }
+
+      .avatar-preview {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #2563eb;
+        background-color: #f1f5f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .avatar-badge {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        background-color: #2563eb;
+        color: #ffffff;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #ffffff;
+        font-size: 12px;
+      }
+
+      .form-group {
+        margin-bottom: 16px;
+        text-align: left;
+      }
+
+      label {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        color: #334155;
+        margin-bottom: 6px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      select {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #0f172a;
+        outline: none;
+        transition: border-color 0.2s;
+        background-color: #ffffff;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      select:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+
+      #loading {
+        color: #2563eb;
+        font-size: 13px;
+        margin-bottom: 12px;
+      }
+
+      button#signup {
+        width: 100%;
+        padding: 11px;
+        background-color: #2563eb;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        margin-top: 8px;
+      }
+
+      button#signup:hover {
+        background-color: #1d4ed8;
+      }
+
+      a {
+        display: inline-block;
+        margin-top: 18px;
+        color: #2563eb;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="signup-card">
+      <h2 class="logo-title">LMS SignUp</h2>
+      <p class="subtitle">Create your account to continue</p>
+
+      <!-- Clickable Avatar UI -->
+      <label for="imageUpload" style="cursor: pointer">
+        <div class="avatar-wrapper">
+          <img
+            id="avatarImg"
+            src="https://via.placeholder.com/90?text=Profile"
+            class="avatar-preview"
+            alt="Profile"
+          />
+          <div class="avatar-badge">📷</div>
+        </div>
+      </label>
+
+      <!-- Hidden Real File Input -->
+      <input
+        type="file"
+        id="imageUpload"
+        accept="image/*"
+        style="display: none"
+        onchange="previewImage(event)"
+      />
+
+      <!-- <button onclick="uploadimage()" id="btn"> upload image</button> -->
+      <b id="loading" style="display: none">Loading.....</b>
+
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" placeholder="Enter name" id="name" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" placeholder="Enter Email Address" id="email" />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="text" placeholder="Enter Password" id="password" />
+      </div>
+
+      <!-- Course Container: Label aur Dropdown dono ek sath hide/show honge -->
+      <div class="form-group" id="courseContainer" style="display: none">
+        <label for="courseList">Course Name</label>
+        <select name="" id="courseList">
+          <option value="" disabled selected>Select Course</option>
+        </select>
+      </div>
+
+      <button id="signup">SignUp</button>
+
+      <br />
+      <a href="./login.html">Already Account ? </a>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-database-compat.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyAQONBiI8n5d7ESOExHW9wMpVQt8wiMfF4",
+        authDomain: "quiz-app-6c845.firebaseapp.com",
+        databaseURL: "https://quiz-app-6c845-default-rtdb.firebaseio.com",
+        projectId: "quiz-app-6c845",
+        storageBucket: "quiz-app-6c845.firebasestorage.app",
+        messagingSenderId: "531417377109",
+        appId: "1:531417377109:web:3f340d6ccd8726aba2a7dc",
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      // Selected image preview handler
+      function previewImage(event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("avatarImg").src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+    </script>
+    <script src="signUp.js"></script>
+  </body>
+</html>
